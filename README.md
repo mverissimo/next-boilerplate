@@ -16,7 +16,7 @@ The `ci` automatically upload `codecov` reports, but you need to add the followi
 CODECOV_TOKEN=$TOKEN
 ```
 
-[Check here](https://codecov.io/) how to create your account and get the token.
+[Check here](https://codecov.io/) how to create your account and get the token
 
 ## Commands
 
