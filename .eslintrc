@@ -1,7 +1,7 @@
 {
   "extends": [
-    "react-app",
-    "react-app/jest",
+    "next",
+    "next/core-web-vitals",
     "plugin:jsx-a11y/recommended",
     "plugin:testing-library/react"
   ],
