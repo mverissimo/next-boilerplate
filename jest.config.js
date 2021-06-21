@@ -25,4 +25,5 @@ module.exports = {
     '!**/node_modules/**',
   ],
   snapshotSerializers: ['@emotion/jest/serializer'],
+  testEnvironment: 'jsdom',
 };

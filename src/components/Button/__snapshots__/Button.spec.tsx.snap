@@ -14,7 +14,7 @@ exports[`Button styles should render with default style 1`] = `
 }
 
 <button
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Button
 </button>
