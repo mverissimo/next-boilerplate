@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>{process.env.SITE_TITLE}</title>
+        <title>{process.env.SITE_NAME}</title>
 
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
