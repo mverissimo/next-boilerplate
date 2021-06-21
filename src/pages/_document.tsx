@@ -11,8 +11,8 @@ import { renderStatic } from '@styles/render-static';
 
 class AppDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const page = await ctx.renderPage();
-    const { css, ids } = await renderStatic(page.html);
+    const view = await ctx.renderPage();
+    const { css, ids } = await renderStatic(view.html);
     const initialProps = await Document.getInitialProps(ctx);
 
     return {

@@ -6,6 +6,7 @@ import {
   fireEvent,
   renderToHtml,
   axe,
+  screen,
 } from '@utils/test-utils';
 
 import { Button } from '.';
@@ -22,8 +23,10 @@ describe('Button', () => {
   describe('Behavior', () => {
     it('should accept a working ref for a Button', () => {
       const buttonRef = React.createRef<HTMLButtonElement>();
-      const { container } = render(<Button ref={buttonRef}>Button</Button>);
-      const button = container.querySelector('button');
+
+      render(<Button ref={buttonRef}>Button</Button>);
+
+      const button = screen.getByRole('button');
 
       expect(buttonRef.current).toBe(button);
     });
@@ -33,9 +36,10 @@ describe('Button', () => {
         onClick: jest.fn(),
         'data-testid': 'button',
       };
-      const { getByTestId } = render(<Button {...props}>Button</Button>);
 
-      fireEvent.click(getByTestId('button'));
+      render(<Button {...props}>Button</Button>);
+
+      fireEvent.click(screen.getByTestId('button'));
 
       expect(props.onClick).toHaveBeenCalledTimes(1);
     });
@@ -43,8 +47,8 @@ describe('Button', () => {
 
   describe('Acessibility', () => {
     it('should meet accessibility guidelines', async () => {
-      const wrapper = renderToHtml(<Button>Button</Button>);
-      const results = await axe(wrapper);
+      const view = renderToHtml(<Button>Button</Button>);
+      const results = await axe(view);
 
       expect(results).toHaveNoViolations();
     });

@@ -1,14 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { ReactElement, FunctionComponent } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import {
-  render as renderTest,
-  waitFor,
-  waitForElementToBeRemoved,
-  act,
-  fireEvent,
-  RenderResult,
-} from '@testing-library/react';
+import { render as renderTest, RenderResult } from '@testing-library/react';
 import { renderHook, act as actHook } from '@testing-library/react-hooks';
 import userEvent from '@testing-library/user-event';
 import { configureAxe } from 'jest-axe';
@@ -32,11 +25,11 @@ const renderToHtml: RenderFn<string> = (component) =>
   renderToStaticMarkup(<WithProviders>{component}</WithProviders>);
 
 const create = (...args: Parameters<RenderFn<RenderResult>>) => {
-  const { container } = render(...args);
+  const {
+    container: { firstChild, children },
+  } = render(...args);
 
-  return container.children.length > 1
-    ? container.children
-    : container.firstChild;
+  return children.length > 1 ? children : firstChild;
 };
 
 const axe = configureAxe({
@@ -51,16 +44,5 @@ const axe = configureAxe({
   },
 });
 
-export {
-  axe,
-  create,
-  render,
-  renderToHtml,
-  renderHook,
-  act,
-  actHook,
-  fireEvent,
-  userEvent,
-  waitFor,
-  waitForElementToBeRemoved,
-};
+export * from '@testing-library/react';
+export { axe, create, render, renderToHtml, renderHook, actHook, userEvent };
