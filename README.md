@@ -36,7 +36,6 @@ Maybe add a cypress integration
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Nextjs](https://nextjs.org/)
-- [Emotion](https://emotion.sh/docs/)
 - [Jest](https://jestjs.io/en/)
 - [Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Husky](https://typicode.github.io/husky/)

@@ -1,29 +1,25 @@
-module.exports = {
-  preset: 'ts-jest',
-  globals: {
-    'ts-jest': {
-      babelConfig: true,
-    },
-  },
-  testURL: 'http://localhost',
-  modulePaths: ['<rootDir>/src/'],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  dir: './',
+});
+
+const config = {
+  testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
+  moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
-    '^@components/(.*)': '<rootDir>/src/components/$1',
-    '^@styles/(.*)': '<rootDir>/src/styles/$1',
-    '^@utils/(.*)': '<rootDir>/src/utils/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
   },
-  testPathIgnorePatterns: ['./.next/', './node_modules/'],
-  setupFilesAfterEnv: ['<rootDir>/.jest/setup.tsx'],
-  coverageDirectory: './__coverage__/jest',
-  coverageReporters: ['cobertura', 'text-summary', 'html'],
-  collectCoverage: true,
+  coverageDirectory: '<rootDir>/coverage',
+  coverageReporters: ['cobertura'],
   collectCoverageFrom: [
-    'src/@(components|utils|styles)/**/*.{ts,tsx}',
-    '!src/utils/test-utils.tsx',
+    '<rootDir>/src/@(components|utils)/**/*.{ts,tsx}',
+    '!<rootDir>/src/**/index.{ts,tsx,js,jsx}',
     '!**/*.d.ts',
+    '!.jest/**',
     '!**/node_modules/**',
   ],
-  snapshotSerializers: ['@emotion/jest/serializer'],
-  testEnvironment: 'jsdom',
 };
+
+module.exports = createJestConfig(config);

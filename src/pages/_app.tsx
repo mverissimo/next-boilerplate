@@ -1,14 +1,29 @@
+import '@/styles/main.css';
+
+import React from 'react';
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@emotion/react';
 
-import { light } from '@styles/theme';
+function MyApp(props: AppProps) {
+  let { Component, pageProps } = props;
 
-function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={light}>
+    <React.Fragment>
+      <Head>
+        <title>Next boilerplate</title>
+
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1"
+        />
+        <meta name="description" content="description" />
+      </Head>
+
       <Component {...pageProps} />
-    </ThemeProvider>
+    </React.Fragment>
   );
 }
 
-export default App;
+export default MyApp;

@@ -35,3 +35,6 @@ yarn-error.log*
 
 # Jest
 __coverage__
+
+# typescript
+*.tsbuildinfo
