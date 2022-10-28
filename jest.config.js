@@ -9,12 +9,13 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
-    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/components/(.*)$': '<rootDir>/components/$1',
   },
   coverageDirectory: '<rootDir>/coverage',
   coverageReporters: ['cobertura'],
   collectCoverageFrom: [
-    '<rootDir>/src/@(components|utils)/**/*.{ts,tsx}',
+    '<rootDir>/app/@(components|utils)/**/*.{ts,tsx}',
+    '!<rootDir>/app/**/index.{ts,tsx,js,jsx}',
     '!<rootDir>/src/**/index.{ts,tsx,js,jsx}',
     '!**/*.d.ts',
     '!.jest/**',
