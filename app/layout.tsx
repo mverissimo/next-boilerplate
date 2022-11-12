@@ -5,7 +5,9 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout(props: RootLayoutProps) {
+  let { children } = props;
+
   return (
     <html>
       <body>{children}</body>

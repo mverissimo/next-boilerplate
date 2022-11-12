@@ -28,16 +28,16 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: node_modules
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --pure-lockfile
@@ -60,13 +60,12 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
+      - uses: actions/cache@v3
         id: yarn-cache
         with:
-          path: node_modules
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -84,7 +83,7 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           reporter: github-pr-review
-          workdir: 'src/'
+          workdir: 'app/'
           eslint_flags: '--ext .ts,.tsx'
 
       - name: Upload results to Codecov
