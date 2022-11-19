@@ -83,7 +83,6 @@ jobs:
         uses: reviewdog/action-eslint@v1
         with:
           reporter: github-pr-review
-          workdir: 'app/'
           eslint_flags: '--ext .ts,.tsx'
 
       - name: Upload results to Codecov
