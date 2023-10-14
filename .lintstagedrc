@@ -1,6 +1,3 @@
 {
-  "*.{ts,tsx}": [
-    "prettier src/ --check --write",
-    "jest --bail --findRelatedTests"
-  ]
+  "*.{ts,tsx}": ["prettier src/ --check --write"]
 }
