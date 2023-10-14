@@ -1,3 +1,6 @@
 {
-  "*.ts,*.tsx": ["prettier src/ --check --write", "jest"]
+  "*.{ts,tsx}": [
+    "prettier src/ --check --write",
+    "jest --bail --findRelatedTests"
+  ]
 }
