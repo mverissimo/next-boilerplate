@@ -1,7 +1,7 @@
 import React from 'react';
 import type { InputHTMLAttributes, Ref, ElementRef } from 'react';
 
-import * as styles from './input.styles';
+import styles from './input.styles';
 
 export interface InputProps
   extends Omit<
@@ -47,7 +47,7 @@ const Input = React.forwardRef<ElementRef<'input'>, InputProps>(
 
     return (
       <input
-        className={styles.base({ size, class: className })}
+        className={styles({ size, className })}
         disabled={isDisabled}
         required={isRequired}
         readOnly={isReadOnly}
@@ -55,7 +55,7 @@ const Input = React.forwardRef<ElementRef<'input'>, InputProps>(
         {...rest}
       />
     );
-  }
+  },
 );
 
 Input.displayName = 'Input';

@@ -1,7 +1,7 @@
 const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
-  dir: './',
+  dir: './src',
 });
 
 const config = {
@@ -9,7 +9,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
-    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^~/components/(.*)$': '<rootDir>/components/$1',
   },
   coverageDirectory: '<rootDir>/coverage',
   coverageReporters: ['cobertura'],

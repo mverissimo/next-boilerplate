@@ -1,0 +1,3 @@
+{
+  "*.ts,*.tsx": ["prettier src/ --check --write", "jest"]
+}

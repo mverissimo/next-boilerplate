@@ -1,11 +1,7 @@
-'use client';
-
 import React from 'react';
 import type { ButtonHTMLAttributes, Ref, ReactNode, ElementRef } from 'react';
 
-import { Slot } from '@radix-ui/react-slot';
-
-import * as styles from './button.styles';
+import styles from './button.styles';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
@@ -35,11 +31,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isFullWidth?: boolean;
 
   /**
-   * Change the component to the HTML tag or custom component of the only child
-   */
-  asChild?: boolean;
-
-  /**
    * The ref to the HTML DOM element
    */
   ref?: Ref<HTMLButtonElement>;
@@ -56,31 +47,25 @@ const Button = React.forwardRef<ElementRef<'button'>, ButtonProps>(
       appearance = 'primary',
       size = 'md',
       className,
-      asChild = false,
       isDisabled = false,
       isFullWidth = false,
-      children,
       ...rest
     } = props;
 
-    let Component = asChild ? Slot : 'button';
-
     return (
-      <Component
-        className={styles.base({
+      <button
+        className={styles({
           appearance,
           size,
           isFullWidth,
-          class: className,
+          className,
         })}
         disabled={isDisabled}
         ref={ref}
         {...rest}
-      >
-        <span>{children}</span>
-      </Component>
+      />
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';
