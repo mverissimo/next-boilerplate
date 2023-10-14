@@ -61,7 +61,6 @@ jobs:
         with:
           node-version: 18
           check-latest: true
-          cache: 'pnpm'
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
